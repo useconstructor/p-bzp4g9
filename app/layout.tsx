@@ -3,8 +3,8 @@ import type { ReactNode } from 'react';
 import './globals.css';
 
 export const metadata: Metadata = {
-  title: 'Project 1788455826330',
-  description: 'A serene, conversion-focused website for Estudio de Yoga Zen, a boutique yoga and meditation studio, featuring class overviews, a weekly schedule with booking, membership pricing tiers, and free-trial class reservation.',
+  title: 'Estudio Zen | Yoga & Meditation Studio',
+  description: 'A space to come home to you. Boutique yoga and meditation studio offering classes, teacher training, and workshops.',
 };
 
 export default function RootLayout({ children }: { children: ReactNode }) {

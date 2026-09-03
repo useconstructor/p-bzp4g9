@@ -1,43 +1,325 @@
+'use client';
+
+import { useState } from 'react';
+import { Leaf, Users, Calendar, Award, ChevronDown } from 'lucide-react';
+
 export default function Home() {
+  const [selectedClass, setSelectedClass] = useState('');
+  const [selectedDate, setSelectedDate] = useState('');
+  const [selectedTime, setSelectedTime] = useState('');
+
   return (
-    <div>
-      <header style={{background:'#FDF8F3',color:'white',padding:'20px 40px',display:'flex',alignItems:'center',justifyContent:'space-between'}}>
-        <span style={{fontSize:'1.5rem',fontWeight:'bold'}}>Project 1788455826330</span>
-        <nav style={{display:'flex',gap:'20px'}}>
-          <a href="#nav_sticky" style={{color:'white',textDecoration:'none'}}>nav_sticky</a>
-          <a href="#hero_split" style={{color:'white',textDecoration:'none'}}>hero_split</a>
-          <a href="#stats_banner" style={{color:'white',textDecoration:'none'}}>stats_banner</a>
-          <a href="#services_cards" style={{color:'white',textDecoration:'none'}}>services_cards</a>
-          <a href="#booking_form" style={{color:'white',textDecoration:'none'}}>booking_form</a>
+    <div className="min-h-screen bg-[#FDF8F3]">
+      {/* Sticky Navigation */}
+      <header className="sticky top-0 z-50 bg-[#FDF8F3]/95 backdrop-blur-sm border-b border-[#F3E7E4]">
+        <nav className="max-w-7xl mx-auto px-6 py-4 flex items-center justify-between">
+          <a href="/" className="text-2xl font-serif text-[#2A2B2A]">Estudio Zen</a>
+          <div className="hidden md:flex items-center gap-8">
+            <a href="#about" className="text-[#2A2B2A] hover:text-[#2C7A76] transition-colors">About</a>
+            <a href="#classes" className="text-[#2A2B2A] hover:text-[#2C7A76] transition-colors">Classes</a>
+            <a href="#teacher-training" className="text-[#2A2B2A] hover:text-[#2C7A76] transition-colors">Teacher Training</a>
+            <a href="#workshops" className="text-[#2A2B2A] hover:text-[#2C7A76] transition-colors">Workshops</a>
+            <a href="#schedule" className="text-[#2A2B2A] hover:text-[#2C7A76] transition-colors">Schedule</a>
+            <a href="#contact" className="text-[#2A2B2A] hover:text-[#2C7A76] transition-colors">Contact</a>
+          </div>
+          <a href="#booking" className="bg-[#2C7A76] text-white px-6 py-2 rounded-full hover:bg-[#245f5c] transition-colors">
+            Book a Class
+          </a>
         </nav>
       </header>
-      <section style={{background:'#FDF8F3',color:'white',padding:'100px 40px',textAlign:'center'}}>
-        <h1 style={{fontSize:'3rem',fontWeight:'800',marginBottom:'20px'}}>Project 1788455826330</h1>
-        <p style={{fontSize:'1.2rem',opacity:0.85,maxWidth:'600px',margin:'0 auto 40px'}}>A serene, conversion-focused website for Estudio de Yoga Zen, a boutique yoga and meditation studio, featuring class overviews, a weekly schedule with booking, membership pricing tiers, and free-trial class reservation.</p>
-        <a href="#contact" style={{background:'#2C7A76',color:'white',padding:'16px 32px',borderRadius:'50px',textDecoration:'none',fontWeight:'bold',display:'inline-block'}}>Get In Touch</a>
+
+      {/* Hero Section - Split Layout */}
+      <section className="grid md:grid-cols-2 min-h-[80vh]">
+        <div className="flex flex-col justify-center px-8 md:px-16 py-16">
+          <h1 className="text-4xl md:text-5xl lg:text-6xl font-serif text-[#2A2B2A] leading-tight mb-6">
+            A space to come home to you
+          </h1>
+          <p className="text-lg text-[#666] mb-8 max-w-lg">
+            Discover inner peace and physical wellness at our boutique yoga and meditation studio.
+            Join our community and transform your practice.
+          </p>
+          <div className="flex flex-wrap gap-4">
+            <a href="#booking" className="bg-[#2C7A76] text-white px-8 py-4 rounded-full font-medium hover:bg-[#245f5c] transition-colors">
+              Book Your Free Trial
+            </a>
+            <a href="#classes" className="border-2 border-[#2C7A76] text-[#2C7A76] px-8 py-4 rounded-full font-medium hover:bg-[#2C7A76] hover:text-white transition-colors">
+              View Classes
+            </a>
+          </div>
+        </div>
+        <div className="relative bg-[#F3E7E4] flex items-center justify-center overflow-hidden">
+          <div className="absolute inset-0 bg-gradient-to-br from-[#F3E7E4] to-[#E8D9D6]" />
+          <div className="relative z-10 w-full h-full min-h-[400px] flex items-center justify-center">
+            <div className="w-64 h-64 md:w-80 md:h-80 rounded-full bg-[#2C7A76]/10 flex items-center justify-center">
+              <Leaf className="w-32 h-32 md:w-40 md:h-40 text-[#2C7A76]" />
+            </div>
+          </div>
+        </div>
       </section>
-      <section id="nav_sticky" style={{padding:'80px 40px',textAlign:'center'}}>
-        <h2 style={{fontSize:'2rem',fontWeight:'700',marginBottom:'16px',color:'#FDF8F3'}}>nav_sticky</h2>
-        <p style={{color:'#666',maxWidth:'500px',margin:'0 auto'}}>Contact us to learn more about our nav_sticky offerings.</p>
+
+      {/* Stats Banner */}
+      <section className="bg-[#2C7A76] py-12">
+        <div className="max-w-7xl mx-auto px-6 grid grid-cols-2 md:grid-cols-4 gap-8 text-center">
+          <div>
+            <p className="text-4xl md:text-5xl font-bold text-white mb-2">4,200+</p>
+            <p className="text-[#FDF8F3]/80">Students</p>
+          </div>
+          <div>
+            <p className="text-4xl md:text-5xl font-bold text-white mb-2">150+</p>
+            <p className="text-[#FDF8F3]/80">Classes</p>
+          </div>
+          <div>
+            <p className="text-4xl md:text-5xl font-bold text-white mb-2">25+</p>
+            <p className="text-[#FDF8F3]/80">Teachers</p>
+          </div>
+          <div>
+            <p className="text-4xl md:text-5xl font-bold text-white mb-2">8</p>
+            <p className="text-[#FDF8F3]/80">Years</p>
+          </div>
+        </div>
       </section>
-      <section id="hero_split" style={{padding:'80px 40px',textAlign:'center'}}>
-        <h2 style={{fontSize:'2rem',fontWeight:'700',marginBottom:'16px',color:'#FDF8F3'}}>hero_split</h2>
-        <p style={{color:'#666',maxWidth:'500px',margin:'0 auto'}}>Contact us to learn more about our hero_split offerings.</p>
+
+      {/* Services Cards */}
+      <section id="classes" className="py-20 px-6">
+        <div className="max-w-7xl mx-auto">
+          <div className="text-center mb-16">
+            <h2 className="text-3xl md:text-4xl font-serif text-[#2A2B2A] mb-4">Our Offerings</h2>
+            <p className="text-[#666] max-w-2xl mx-auto">
+              Explore our range of classes and programs designed to nurture your body, mind, and spirit.
+            </p>
+          </div>
+          <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-6">
+            {/* Yoga Classes Card */}
+            <div className="bg-white rounded-2xl p-8 shadow-sm hover:shadow-lg transition-shadow border border-[#F3E7E4]">
+              <div className="w-14 h-14 bg-[#2C7A76]/10 rounded-xl flex items-center justify-center mb-6">
+                <Leaf className="w-7 h-7 text-[#2C7A76]" />
+              </div>
+              <h3 className="text-xl font-semibold text-[#2A2B2A] mb-3">Yoga Classes</h3>
+              <p className="text-[#666] mb-4">
+                From gentle flow to power yoga, find the perfect class for your practice level.
+              </p>
+              <a href="#booking" className="text-[#2C7A76] font-medium hover:underline">
+                Explore Classes &rarr;
+              </a>
+            </div>
+
+            {/* Meditation Card */}
+            <div className="bg-white rounded-2xl p-8 shadow-sm hover:shadow-lg transition-shadow border border-[#F3E7E4]">
+              <div className="w-14 h-14 bg-[#2C7A76]/10 rounded-xl flex items-center justify-center mb-6">
+                <Users className="w-7 h-7 text-[#2C7A76]" />
+              </div>
+              <h3 className="text-xl font-semibold text-[#2A2B2A] mb-3">Meditation</h3>
+              <p className="text-[#666] mb-4">
+                Guided meditation sessions to calm your mind and enhance mental clarity.
+              </p>
+              <a href="#booking" className="text-[#2C7A76] font-medium hover:underline">
+                Learn More &rarr;
+              </a>
+            </div>
+
+            {/* Teacher Training Card */}
+            <div id="teacher-training" className="bg-white rounded-2xl p-8 shadow-sm hover:shadow-lg transition-shadow border border-[#F3E7E4]">
+              <div className="w-14 h-14 bg-[#2C7A76]/10 rounded-xl flex items-center justify-center mb-6">
+                <Award className="w-7 h-7 text-[#2C7A76]" />
+              </div>
+              <h3 className="text-xl font-semibold text-[#2A2B2A] mb-3">Teacher Training</h3>
+              <p className="text-[#666] mb-4">
+                200-hour and 500-hour certified yoga teacher training programs.
+              </p>
+              <a href="#booking" className="text-[#2C7A76] font-medium hover:underline">
+                Start Your Journey &rarr;
+              </a>
+            </div>
+
+            {/* Workshops Card */}
+            <div id="workshops" className="bg-white rounded-2xl p-8 shadow-sm hover:shadow-lg transition-shadow border border-[#F3E7E4]">
+              <div className="w-14 h-14 bg-[#2C7A76]/10 rounded-xl flex items-center justify-center mb-6">
+                <Calendar className="w-7 h-7 text-[#2C7A76]" />
+              </div>
+              <h3 className="text-xl font-semibold text-[#2A2B2A] mb-3">Workshops</h3>
+              <p className="text-[#666] mb-4">
+                Special weekend workshops on inversions, breathwork, and more.
+              </p>
+              <a href="#booking" className="text-[#2C7A76] font-medium hover:underline">
+                View Schedule &rarr;
+              </a>
+            </div>
+          </div>
+        </div>
       </section>
-      <section id="stats_banner" style={{padding:'80px 40px',textAlign:'center'}}>
-        <h2 style={{fontSize:'2rem',fontWeight:'700',marginBottom:'16px',color:'#FDF8F3'}}>stats_banner</h2>
-        <p style={{color:'#666',maxWidth:'500px',margin:'0 auto'}}>Contact us to learn more about our stats_banner offerings.</p>
+
+      {/* Booking Form Section */}
+      <section id="booking" className="py-20 px-6 bg-[#F3E7E4]">
+        <div className="max-w-4xl mx-auto">
+          <div className="text-center mb-12">
+            <h2 className="text-3xl md:text-4xl font-serif text-[#2A2B2A] mb-4">Book Your Class</h2>
+            <p className="text-[#666]">
+              Reserve your spot in one of our classes. First class is free for new students!
+            </p>
+          </div>
+          <div className="bg-white rounded-2xl p-8 md:p-12 shadow-lg">
+            <form className="grid md:grid-cols-3 gap-6">
+              {/* Class Selector */}
+              <div className="relative">
+                <label className="block text-sm font-medium text-[#2A2B2A] mb-2">Select Class</label>
+                <div className="relative">
+                  <select
+                    value={selectedClass}
+                    onChange={(e) => setSelectedClass(e.target.value)}
+                    className="w-full appearance-none bg-[#FDF8F3] border border-[#F3E7E4] rounded-lg px-4 py-3 text-[#2A2B2A] focus:outline-none focus:ring-2 focus:ring-[#2C7A76]"
+                  >
+                    <option value="">Choose a class</option>
+                    <option value="vinyasa">Vinyasa Flow</option>
+                    <option value="hatha">Hatha Yoga</option>
+                    <option value="yin">Yin Yoga</option>
+                    <option value="power">Power Yoga</option>
+                    <option value="meditation">Guided Meditation</option>
+                    <option value="prenatal">Prenatal Yoga</option>
+                  </select>
+                  <ChevronDown className="absolute right-4 top-1/2 -translate-y-1/2 w-5 h-5 text-[#666] pointer-events-none" />
+                </div>
+              </div>
+
+              {/* Date Selector */}
+              <div>
+                <label className="block text-sm font-medium text-[#2A2B2A] mb-2">Select Date</label>
+                <input
+                  type="date"
+                  value={selectedDate}
+                  onChange={(e) => setSelectedDate(e.target.value)}
+                  className="w-full bg-[#FDF8F3] border border-[#F3E7E4] rounded-lg px-4 py-3 text-[#2A2B2A] focus:outline-none focus:ring-2 focus:ring-[#2C7A76]"
+                />
+              </div>
+
+              {/* Time Selector */}
+              <div className="relative">
+                <label className="block text-sm font-medium text-[#2A2B2A] mb-2">Select Time</label>
+                <div className="relative">
+                  <select
+                    value={selectedTime}
+                    onChange={(e) => setSelectedTime(e.target.value)}
+                    className="w-full appearance-none bg-[#FDF8F3] border border-[#F3E7E4] rounded-lg px-4 py-3 text-[#2A2B2A] focus:outline-none focus:ring-2 focus:ring-[#2C7A76]"
+                  >
+                    <option value="">Choose a time</option>
+                    <option value="6:00">6:00 AM</option>
+                    <option value="7:30">7:30 AM</option>
+                    <option value="9:00">9:00 AM</option>
+                    <option value="10:30">10:30 AM</option>
+                    <option value="12:00">12:00 PM</option>
+                    <option value="17:00">5:00 PM</option>
+                    <option value="18:30">6:30 PM</option>
+                    <option value="20:00">8:00 PM</option>
+                  </select>
+                  <ChevronDown className="absolute right-4 top-1/2 -translate-y-1/2 w-5 h-5 text-[#666] pointer-events-none" />
+                </div>
+              </div>
+
+              {/* Submit Button - Full Width */}
+              <div className="md:col-span-3 mt-4">
+                <button
+                  type="submit"
+                  className="w-full bg-[#2C7A76] text-white py-4 rounded-full font-medium text-lg hover:bg-[#245f5c] transition-colors"
+                >
+                  Reserve Your Spot
+                </button>
+                <p className="text-center text-sm text-[#666] mt-4">
+                  First class is complimentary for new students
+                </p>
+              </div>
+            </form>
+          </div>
+        </div>
       </section>
-      <section id="services_cards" style={{padding:'80px 40px',textAlign:'center'}}>
-        <h2 style={{fontSize:'2rem',fontWeight:'700',marginBottom:'16px',color:'#FDF8F3'}}>services_cards</h2>
-        <p style={{color:'#666',maxWidth:'500px',margin:'0 auto'}}>Contact us to learn more about our services_cards offerings.</p>
+
+      {/* About Section */}
+      <section id="about" className="py-20 px-6">
+        <div className="max-w-7xl mx-auto grid md:grid-cols-2 gap-12 items-center">
+          <div>
+            <h2 className="text-3xl md:text-4xl font-serif text-[#2A2B2A] mb-6">
+              Welcome to Estudio Zen
+            </h2>
+            <p className="text-[#666] mb-4">
+              For over 8 years, we&apos;ve been creating a sanctuary where students of all levels
+              can explore the transformative power of yoga and meditation.
+            </p>
+            <p className="text-[#666] mb-6">
+              Our experienced teachers guide you through practices that honor traditional
+              wisdom while embracing modern wellness principles. Whether you&apos;re taking
+              your first class or deepening an established practice, you&apos;ll find
+              a welcoming community here.
+            </p>
+            <a href="#contact" className="text-[#2C7A76] font-medium hover:underline">
+              Meet Our Teachers &rarr;
+            </a>
+          </div>
+          <div className="bg-[#F3E7E4] rounded-2xl p-12 flex items-center justify-center">
+            <div className="w-48 h-48 rounded-full bg-[#2C7A76]/10 flex items-center justify-center">
+              <Leaf className="w-24 h-24 text-[#2C7A76]" />
+            </div>
+          </div>
+        </div>
       </section>
-      <section id="booking_form" style={{padding:'80px 40px',textAlign:'center'}}>
-        <h2 style={{fontSize:'2rem',fontWeight:'700',marginBottom:'16px',color:'#FDF8F3'}}>booking_form</h2>
-        <p style={{color:'#666',maxWidth:'500px',margin:'0 auto'}}>Contact us to learn more about our booking_form offerings.</p>
+
+      {/* Contact Section */}
+      <section id="contact" className="py-20 px-6 bg-[#2A2B2A]">
+        <div className="max-w-4xl mx-auto text-center">
+          <h2 className="text-3xl md:text-4xl font-serif text-white mb-6">
+            Begin Your Journey Today
+          </h2>
+          <p className="text-[#FDF8F3]/80 mb-8 max-w-2xl mx-auto">
+            Have questions? We&apos;d love to hear from you. Reach out to learn more
+            about our classes, memberships, or teacher training programs.
+          </p>
+          <div className="flex flex-wrap justify-center gap-4">
+            <a href="mailto:hello@estudiozenyoga.com" className="bg-[#2C7A76] text-white px-8 py-4 rounded-full font-medium hover:bg-[#245f5c] transition-colors">
+              Contact Us
+            </a>
+            <a href="#schedule" className="border-2 border-white text-white px-8 py-4 rounded-full font-medium hover:bg-white hover:text-[#2A2B2A] transition-colors">
+              View Full Schedule
+            </a>
+          </div>
+        </div>
       </section>
-      <footer style={{background:'#FDF8F3',color:'white',padding:'30px',textAlign:'center'}}>
-        <p>Copyright 2026 Project 1788455826330. All rights reserved.</p>
+
+      {/* Footer */}
+      <footer className="bg-[#2A2B2A] border-t border-white/10 py-12 px-6">
+        <div className="max-w-7xl mx-auto">
+          <div className="grid md:grid-cols-4 gap-8 mb-8">
+            <div>
+              <h3 className="text-xl font-serif text-white mb-4">Estudio Zen</h3>
+              <p className="text-[#FDF8F3]/60 text-sm">
+                A space to come home to you.
+              </p>
+            </div>
+            <div>
+              <h4 className="text-white font-medium mb-4">Classes</h4>
+              <ul className="space-y-2 text-sm text-[#FDF8F3]/60">
+                <li><a href="#" className="hover:text-white transition-colors">Yoga Classes</a></li>
+                <li><a href="#" className="hover:text-white transition-colors">Meditation</a></li>
+                <li><a href="#" className="hover:text-white transition-colors">Workshops</a></li>
+              </ul>
+            </div>
+            <div>
+              <h4 className="text-white font-medium mb-4">Programs</h4>
+              <ul className="space-y-2 text-sm text-[#FDF8F3]/60">
+                <li><a href="#" className="hover:text-white transition-colors">Teacher Training</a></li>
+                <li><a href="#" className="hover:text-white transition-colors">Memberships</a></li>
+                <li><a href="#" className="hover:text-white transition-colors">Private Sessions</a></li>
+              </ul>
+            </div>
+            <div>
+              <h4 className="text-white font-medium mb-4">Contact</h4>
+              <ul className="space-y-2 text-sm text-[#FDF8F3]/60">
+                <li>hello@estudiozenyoga.com</li>
+                <li>123 Serenity Lane</li>
+                <li>Mon-Sun: 6am - 9pm</li>
+              </ul>
+            </div>
+          </div>
+          <div className="border-t border-white/10 pt-8 text-center text-sm text-[#FDF8F3]/40">
+            <p>Copyright 2026 Estudio Zen. All rights reserved.</p>
+          </div>
+        </div>
       </footer>
     </div>
   );
