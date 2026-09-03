@@ -1,7 +1,27 @@
 'use client';
 
 import { useState } from 'react';
-import { Leaf, Users, Calendar, Award, ChevronDown } from 'lucide-react';
+import { ChevronDown, Users, BookOpen, Award, Calendar } from 'lucide-react';
+import Image from 'next/image';
+
+function LotusIcon({ className }: { className?: string }) {
+  return (
+    <svg className={className} viewBox="0 0 64 64" fill="currentColor" xmlns="http://www.w3.org/2000/svg">
+      <path d="M32 8c0 0-8 12-8 24s8 16 8 16 8-4 8-16-8-24-8-24z" opacity="0.9"/>
+      <path d="M32 48s-16-8-20-20c0 0 4 20 20 28 16-8 20-28 20-28-4 12-20 20-20 20z" opacity="0.7"/>
+      <path d="M12 28c0 0 8 4 20 4s20-4 20-4c0 8-8 16-20 20-12-4-20-12-20-20z" opacity="0.5"/>
+    </svg>
+  );
+}
+
+function LeafIcon({ className }: { className?: string }) {
+  return (
+    <svg className={className} viewBox="0 0 64 64" fill="currentColor" xmlns="http://www.w3.org/2000/svg">
+      <path d="M32 4C16 4 8 20 8 36c0 12 8 20 8 20s4-16 16-24c12 8 16 24 16 24s8-8 8-20c0-16-8-32-24-32z"/>
+      <path d="M32 20v36" stroke="currentColor" strokeWidth="2" fill="none" opacity="0.5"/>
+    </svg>
+  );
+}
 
 export default function Home() {
   const [selectedClass, setSelectedClass] = useState('');
@@ -13,7 +33,7 @@ export default function Home() {
       {/* Sticky Navigation */}
       <header className="sticky top-0 z-50 bg-[#FDF8F3]/95 backdrop-blur-sm border-b border-[#F3E7E4]">
         <nav className="max-w-7xl mx-auto px-6 py-4 flex items-center justify-between">
-          <a href="/" className="text-2xl font-serif text-[#2A2B2A]">Estudio Zen</a>
+          <a href="/" className="text-2xl font-serif italic text-[#2A2B2A]">Estudio Zen</a>
           <div className="hidden md:flex items-center gap-8">
             <a href="#about" className="text-[#2A2B2A] hover:text-[#2C7A76] transition-colors">About</a>
             <a href="#classes" className="text-[#2A2B2A] hover:text-[#2C7A76] transition-colors">Classes</a>
@@ -28,7 +48,7 @@ export default function Home() {
         </nav>
       </header>
 
-      {/* Hero Section - Split Layout */}
+      {/* Hero Section - Split Layout with Photography */}
       <section className="grid md:grid-cols-2 min-h-[80vh]">
         <div className="flex flex-col justify-center px-8 md:px-16 py-16">
           <h1 className="text-4xl md:text-5xl lg:text-6xl font-serif text-[#2A2B2A] leading-tight mb-6">
@@ -47,39 +67,62 @@ export default function Home() {
             </a>
           </div>
         </div>
-        <div className="relative bg-[#F3E7E4] flex items-center justify-center overflow-hidden">
-          <div className="absolute inset-0 bg-gradient-to-br from-[#F3E7E4] to-[#E8D9D6]" />
-          <div className="relative z-10 w-full h-full min-h-[400px] flex items-center justify-center">
-            <div className="w-64 h-64 md:w-80 md:h-80 rounded-full bg-[#2C7A76]/10 flex items-center justify-center">
-              <Leaf className="w-32 h-32 md:w-40 md:h-40 text-[#2C7A76]" />
+        <div className="relative overflow-hidden">
+          <Image
+            src="https://images.unsplash.com/photo-1545205597-3d9d02c29597?q=80&w=1200&auto=format&fit=crop"
+            alt="Yoga studio with natural light and practitioners in peaceful meditation"
+            fill
+            className="object-cover"
+            priority
+            sizes="(max-width: 768px) 100vw, 50vw"
+          />
+          <div className="absolute inset-0 bg-gradient-to-l from-transparent to-[#FDF8F3]/20" />
+        </div>
+      </section>
+
+      {/* Stats Banner - Beige with Icons */}
+      <section className="bg-[#F3E7E4] py-12 border-y border-[#E8D9D6]">
+        <div className="max-w-7xl mx-auto px-6 grid grid-cols-2 md:grid-cols-4 gap-8">
+          <div className="flex items-center gap-4">
+            <div className="w-14 h-14 rounded-full bg-[#2C7A76]/10 flex items-center justify-center flex-shrink-0">
+              <Users className="w-6 h-6 text-[#2C7A76]" />
+            </div>
+            <div>
+              <p className="text-3xl md:text-4xl font-serif text-[#2A2B2A]">4,200+</p>
+              <p className="text-[#666] text-sm">Students</p>
+            </div>
+          </div>
+          <div className="flex items-center gap-4">
+            <div className="w-14 h-14 rounded-full bg-[#2C7A76]/10 flex items-center justify-center flex-shrink-0">
+              <BookOpen className="w-6 h-6 text-[#2C7A76]" />
+            </div>
+            <div>
+              <p className="text-3xl md:text-4xl font-serif text-[#2A2B2A]">150+</p>
+              <p className="text-[#666] text-sm">Classes</p>
+            </div>
+          </div>
+          <div className="flex items-center gap-4">
+            <div className="w-14 h-14 rounded-full bg-[#2C7A76]/10 flex items-center justify-center flex-shrink-0">
+              <Award className="w-6 h-6 text-[#2C7A76]" />
+            </div>
+            <div>
+              <p className="text-3xl md:text-4xl font-serif text-[#2A2B2A]">25+</p>
+              <p className="text-[#666] text-sm">Teachers</p>
+            </div>
+          </div>
+          <div className="flex items-center gap-4">
+            <div className="w-14 h-14 rounded-full bg-[#2C7A76]/10 flex items-center justify-center flex-shrink-0">
+              <Calendar className="w-6 h-6 text-[#2C7A76]" />
+            </div>
+            <div>
+              <p className="text-3xl md:text-4xl font-serif text-[#2A2B2A]">8</p>
+              <p className="text-[#666] text-sm">Years</p>
             </div>
           </div>
         </div>
       </section>
 
-      {/* Stats Banner */}
-      <section className="bg-[#2C7A76] py-12">
-        <div className="max-w-7xl mx-auto px-6 grid grid-cols-2 md:grid-cols-4 gap-8 text-center">
-          <div>
-            <p className="text-4xl md:text-5xl font-bold text-white mb-2">4,200+</p>
-            <p className="text-[#FDF8F3]/80">Students</p>
-          </div>
-          <div>
-            <p className="text-4xl md:text-5xl font-bold text-white mb-2">150+</p>
-            <p className="text-[#FDF8F3]/80">Classes</p>
-          </div>
-          <div>
-            <p className="text-4xl md:text-5xl font-bold text-white mb-2">25+</p>
-            <p className="text-[#FDF8F3]/80">Teachers</p>
-          </div>
-          <div>
-            <p className="text-4xl md:text-5xl font-bold text-white mb-2">8</p>
-            <p className="text-[#FDF8F3]/80">Years</p>
-          </div>
-        </div>
-      </section>
-
-      {/* Services Cards */}
+      {/* Services Cards with Lotus/Leaf Icons */}
       <section id="classes" className="py-20 px-6">
         <div className="max-w-7xl mx-auto">
           <div className="text-center mb-16">
@@ -90,58 +133,58 @@ export default function Home() {
           </div>
           <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-6">
             {/* Yoga Classes Card */}
-            <div className="bg-white rounded-2xl p-8 shadow-sm hover:shadow-lg transition-shadow border border-[#F3E7E4]">
-              <div className="w-14 h-14 bg-[#2C7A76]/10 rounded-xl flex items-center justify-center mb-6">
-                <Leaf className="w-7 h-7 text-[#2C7A76]" />
+            <div className="bg-white rounded-3xl p-8 shadow-sm hover:shadow-xl transition-all duration-300 border border-[#F3E7E4] group">
+              <div className="w-16 h-16 bg-[#F3E7E4] rounded-full flex items-center justify-center mb-6 group-hover:bg-[#2C7A76]/10 transition-colors">
+                <LotusIcon className="w-8 h-8 text-[#2C7A76]" />
               </div>
-              <h3 className="text-xl font-semibold text-[#2A2B2A] mb-3">Yoga Classes</h3>
-              <p className="text-[#666] mb-4">
+              <h3 className="text-xl font-serif text-[#2A2B2A] mb-3">Yoga Classes</h3>
+              <p className="text-[#666] mb-6 leading-relaxed">
                 From gentle flow to power yoga, find the perfect class for your practice level.
               </p>
-              <a href="#booking" className="text-[#2C7A76] font-medium hover:underline">
-                Explore Classes &rarr;
+              <a href="#booking" className="inline-flex items-center text-[#2C7A76] font-medium hover:gap-2 transition-all">
+                Explore Classes <span className="ml-1">&rarr;</span>
               </a>
             </div>
 
             {/* Meditation Card */}
-            <div className="bg-white rounded-2xl p-8 shadow-sm hover:shadow-lg transition-shadow border border-[#F3E7E4]">
-              <div className="w-14 h-14 bg-[#2C7A76]/10 rounded-xl flex items-center justify-center mb-6">
-                <Users className="w-7 h-7 text-[#2C7A76]" />
+            <div className="bg-white rounded-3xl p-8 shadow-sm hover:shadow-xl transition-all duration-300 border border-[#F3E7E4] group">
+              <div className="w-16 h-16 bg-[#F3E7E4] rounded-full flex items-center justify-center mb-6 group-hover:bg-[#2C7A76]/10 transition-colors">
+                <LeafIcon className="w-8 h-8 text-[#2C7A76]" />
               </div>
-              <h3 className="text-xl font-semibold text-[#2A2B2A] mb-3">Meditation</h3>
-              <p className="text-[#666] mb-4">
+              <h3 className="text-xl font-serif text-[#2A2B2A] mb-3">Meditation</h3>
+              <p className="text-[#666] mb-6 leading-relaxed">
                 Guided meditation sessions to calm your mind and enhance mental clarity.
               </p>
-              <a href="#booking" className="text-[#2C7A76] font-medium hover:underline">
-                Learn More &rarr;
+              <a href="#booking" className="inline-flex items-center text-[#2C7A76] font-medium hover:gap-2 transition-all">
+                Learn More <span className="ml-1">&rarr;</span>
               </a>
             </div>
 
             {/* Teacher Training Card */}
-            <div id="teacher-training" className="bg-white rounded-2xl p-8 shadow-sm hover:shadow-lg transition-shadow border border-[#F3E7E4]">
-              <div className="w-14 h-14 bg-[#2C7A76]/10 rounded-xl flex items-center justify-center mb-6">
-                <Award className="w-7 h-7 text-[#2C7A76]" />
+            <div id="teacher-training" className="bg-white rounded-3xl p-8 shadow-sm hover:shadow-xl transition-all duration-300 border border-[#F3E7E4] group">
+              <div className="w-16 h-16 bg-[#F3E7E4] rounded-full flex items-center justify-center mb-6 group-hover:bg-[#2C7A76]/10 transition-colors">
+                <LotusIcon className="w-8 h-8 text-[#2C7A76]" />
               </div>
-              <h3 className="text-xl font-semibold text-[#2A2B2A] mb-3">Teacher Training</h3>
-              <p className="text-[#666] mb-4">
+              <h3 className="text-xl font-serif text-[#2A2B2A] mb-3">Teacher Training</h3>
+              <p className="text-[#666] mb-6 leading-relaxed">
                 200-hour and 500-hour certified yoga teacher training programs.
               </p>
-              <a href="#booking" className="text-[#2C7A76] font-medium hover:underline">
-                Start Your Journey &rarr;
+              <a href="#booking" className="inline-flex items-center text-[#2C7A76] font-medium hover:gap-2 transition-all">
+                Start Your Journey <span className="ml-1">&rarr;</span>
               </a>
             </div>
 
             {/* Workshops Card */}
-            <div id="workshops" className="bg-white rounded-2xl p-8 shadow-sm hover:shadow-lg transition-shadow border border-[#F3E7E4]">
-              <div className="w-14 h-14 bg-[#2C7A76]/10 rounded-xl flex items-center justify-center mb-6">
-                <Calendar className="w-7 h-7 text-[#2C7A76]" />
+            <div id="workshops" className="bg-white rounded-3xl p-8 shadow-sm hover:shadow-xl transition-all duration-300 border border-[#F3E7E4] group">
+              <div className="w-16 h-16 bg-[#F3E7E4] rounded-full flex items-center justify-center mb-6 group-hover:bg-[#2C7A76]/10 transition-colors">
+                <LeafIcon className="w-8 h-8 text-[#2C7A76]" />
               </div>
-              <h3 className="text-xl font-semibold text-[#2A2B2A] mb-3">Workshops</h3>
-              <p className="text-[#666] mb-4">
+              <h3 className="text-xl font-serif text-[#2A2B2A] mb-3">Workshops</h3>
+              <p className="text-[#666] mb-6 leading-relaxed">
                 Special weekend workshops on inversions, breathwork, and more.
               </p>
-              <a href="#booking" className="text-[#2C7A76] font-medium hover:underline">
-                View Schedule &rarr;
+              <a href="#booking" className="inline-flex items-center text-[#2C7A76] font-medium hover:gap-2 transition-all">
+                View Schedule <span className="ml-1">&rarr;</span>
               </a>
             </div>
           </div>
@@ -157,7 +200,7 @@ export default function Home() {
               Reserve your spot in one of our classes. First class is free for new students!
             </p>
           </div>
-          <div className="bg-white rounded-2xl p-8 md:p-12 shadow-lg">
+          <div className="bg-white rounded-3xl p-8 md:p-12 shadow-lg">
             <form className="grid md:grid-cols-3 gap-6">
               {/* Class Selector */}
               <div className="relative">
@@ -166,7 +209,7 @@ export default function Home() {
                   <select
                     value={selectedClass}
                     onChange={(e) => setSelectedClass(e.target.value)}
-                    className="w-full appearance-none bg-[#FDF8F3] border border-[#F3E7E4] rounded-lg px-4 py-3 text-[#2A2B2A] focus:outline-none focus:ring-2 focus:ring-[#2C7A76]"
+                    className="w-full appearance-none bg-[#FDF8F3] border border-[#F3E7E4] rounded-xl px-4 py-3 text-[#2A2B2A] focus:outline-none focus:ring-2 focus:ring-[#2C7A76]"
                   >
                     <option value="">Choose a class</option>
                     <option value="vinyasa">Vinyasa Flow</option>
@@ -187,7 +230,7 @@ export default function Home() {
                   type="date"
                   value={selectedDate}
                   onChange={(e) => setSelectedDate(e.target.value)}
-                  className="w-full bg-[#FDF8F3] border border-[#F3E7E4] rounded-lg px-4 py-3 text-[#2A2B2A] focus:outline-none focus:ring-2 focus:ring-[#2C7A76]"
+                  className="w-full bg-[#FDF8F3] border border-[#F3E7E4] rounded-xl px-4 py-3 text-[#2A2B2A] focus:outline-none focus:ring-2 focus:ring-[#2C7A76]"
                 />
               </div>
 
@@ -198,7 +241,7 @@ export default function Home() {
                   <select
                     value={selectedTime}
                     onChange={(e) => setSelectedTime(e.target.value)}
-                    className="w-full appearance-none bg-[#FDF8F3] border border-[#F3E7E4] rounded-lg px-4 py-3 text-[#2A2B2A] focus:outline-none focus:ring-2 focus:ring-[#2C7A76]"
+                    className="w-full appearance-none bg-[#FDF8F3] border border-[#F3E7E4] rounded-xl px-4 py-3 text-[#2A2B2A] focus:outline-none focus:ring-2 focus:ring-[#2C7A76]"
                   >
                     <option value="">Choose a time</option>
                     <option value="6:00">6:00 AM</option>
@@ -231,31 +274,35 @@ export default function Home() {
         </div>
       </section>
 
-      {/* About Section */}
+      {/* About Section with Photography */}
       <section id="about" className="py-20 px-6">
         <div className="max-w-7xl mx-auto grid md:grid-cols-2 gap-12 items-center">
           <div>
             <h2 className="text-3xl md:text-4xl font-serif text-[#2A2B2A] mb-6">
               Welcome to Estudio Zen
             </h2>
-            <p className="text-[#666] mb-4">
+            <p className="text-[#666] mb-4 leading-relaxed">
               For over 8 years, we&apos;ve been creating a sanctuary where students of all levels
               can explore the transformative power of yoga and meditation.
             </p>
-            <p className="text-[#666] mb-6">
+            <p className="text-[#666] mb-6 leading-relaxed">
               Our experienced teachers guide you through practices that honor traditional
               wisdom while embracing modern wellness principles. Whether you&apos;re taking
               your first class or deepening an established practice, you&apos;ll find
               a welcoming community here.
             </p>
-            <a href="#contact" className="text-[#2C7A76] font-medium hover:underline">
-              Meet Our Teachers &rarr;
+            <a href="#contact" className="inline-flex items-center text-[#2C7A76] font-medium hover:gap-2 transition-all">
+              Meet Our Teachers <span className="ml-1">&rarr;</span>
             </a>
           </div>
-          <div className="bg-[#F3E7E4] rounded-2xl p-12 flex items-center justify-center">
-            <div className="w-48 h-48 rounded-full bg-[#2C7A76]/10 flex items-center justify-center">
-              <Leaf className="w-24 h-24 text-[#2C7A76]" />
-            </div>
+          <div className="relative h-[400px] md:h-[500px] rounded-3xl overflow-hidden">
+            <Image
+              src="https://images.unsplash.com/photo-1599901860904-17e6ed7083a0?q=80&w=800&auto=format&fit=crop"
+              alt="Peaceful yoga studio interior with warm natural lighting"
+              fill
+              className="object-cover"
+              sizes="(max-width: 768px) 100vw, 50vw"
+            />
           </div>
         </div>
       </section>
@@ -286,7 +333,7 @@ export default function Home() {
         <div className="max-w-7xl mx-auto">
           <div className="grid md:grid-cols-4 gap-8 mb-8">
             <div>
-              <h3 className="text-xl font-serif text-white mb-4">Estudio Zen</h3>
+              <h3 className="text-xl font-serif italic text-white mb-4">Estudio Zen</h3>
               <p className="text-[#FDF8F3]/60 text-sm">
                 A space to come home to you.
               </p>

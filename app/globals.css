@@ -5,9 +5,14 @@
   --color-secondary: #F3E7E4;
   --color-accent: #2C7A76;
   --color-background: #2A2B2A;
+  --font-family-serif: var(--font-playfair), ui-serif, Georgia, Cambria, "Times New Roman", Times, serif;
+  --font-family-sans: var(--font-lato), ui-sans-serif, system-ui, sans-serif;
 }
 
 @layer base {
   * { box-sizing: border-box; }
-  body { margin: 0; }
+  body {
+    margin: 0;
+    font-family: var(--font-family-sans);
+  }
 }
